@@ -1,23 +1,11 @@
-# 💪 FitnessHub
+# FitnessHub
 
 **FitnessHub** to aplikacja mobilna wspierająca codzienną aktywność, planowanie treningów i budowanie zdrowych nawyków. W jednym miejscu łączy przegląd planów i ćwiczeń, monitorowanie kalorii oraz nawodnienia, statystyki postępów i elementy grywalizacji.
 
 Poniżej opisano wszystkie funkcje dostępne w aplikacji, pogrupowane według głównych obszarów.
 
-## 📑 Spis treści
 
-- [Obszary aplikacji](#-obszary-aplikacji)
-- [1. Ekran główny (Hello!)](#1-ekran-główny-hello)
-- [2. Trening](#2-trening)
-- [3. Odżywianie i nawodnienie](#3-odżywianie-i-nawodnienie)
-- [4. Postępy i motywacja](#4-postępy-i-motywacja)
-- [5. Profil i ustawienia](#5-profil-i-ustawienia)
-- [6. Nawigacja i elementy wspólne](#6-nawigacja-i-elementy-wspólne)
-- [7. Podsumowanie](#7-podsumowanie)
-
----
-
-## 🗂️ Obszary aplikacji
+## Obszary aplikacji
 
 | Obszar | Ekrany |
 | --- | --- |
