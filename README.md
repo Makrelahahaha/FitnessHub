@@ -4,6 +4,7 @@
 
 Poniżej opisano wszystkie funkcje dostępne w aplikacji, pogrupowane według głównych obszarów.
 
+Prototyp aplikacji w Figma: https://www.figma.com/community/file/1695394639922316740
 
 ## Obszary aplikacji
 
