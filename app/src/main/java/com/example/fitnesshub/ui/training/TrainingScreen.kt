@@ -1,28 +1,21 @@
 package com.example.fitnesshub.ui.training
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-
+import com.example.fitnesshub.ui.components.PlaceholderAction
+import com.example.fitnesshub.ui.components.PlaceholderPanel
 
 @Composable
-
-fun TrainingScreen(onNavigateToHome: () -> Unit){
-    Surface(modifier = Modifier.fillMaxSize()) {
-        Column(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
-
-            ) {
-            Text(text = "Training Screen", style = MaterialTheme.typography.headlineMedium)
-            Spacer(modifier = Modifier.height(16.dp))
-            Button(onClick = onNavigateToHome){
-                Text(text = "Go to home")
-            }
-        }
-    }
+fun TrainingScreen(
+    onNavigateToCalendar: () -> Unit,
+    onNavigateToLibrary: () -> Unit,
+    onNavigateToWorkoutDetails: () -> Unit
+) {
+    PlaceholderPanel(
+        title = "Training",
+        actions = listOf(
+            PlaceholderAction("Training Calendar", onNavigateToCalendar),
+            PlaceholderAction("Exercise Library", onNavigateToLibrary),
+            PlaceholderAction("Workout Details", onNavigateToWorkoutDetails)
+        )
+    )
 }
