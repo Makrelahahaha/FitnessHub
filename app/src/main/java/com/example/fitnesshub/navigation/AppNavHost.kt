@@ -21,6 +21,7 @@ import com.example.fitnesshub.ui.plans.PlansRoutes
 import com.example.fitnesshub.ui.plans.plansGraph
 import com.example.fitnesshub.ui.progress.ProgressRoutes
 import com.example.fitnesshub.ui.progress.progressGraph
+import com.example.fitnesshub.ui.profile.ProfileRoutes
 import com.example.fitnesshub.ui.training.TrainingRoutes
 import com.example.fitnesshub.ui.training.trainingGraph
 
@@ -28,13 +29,16 @@ import com.example.fitnesshub.ui.training.trainingGraph
 fun AppNavHost(navController: NavHostController) {
     val backStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = backStackEntry?.destination
+    val showBottomBar = currentDestination?.route != ProfileRoutes.Settings
 
     Scaffold(
         bottomBar = {
-            AppBottomBar(
-                currentDestination = currentDestination,
-                onItemSelected = navController::navigateToTopLevel
-            )
+            if (showBottomBar) {
+                AppBottomBar(
+                    currentDestination = currentDestination,
+                    onItemSelected = navController::navigateToTopLevel
+                )
+            }
         }
     ) { innerPadding ->
         NavHost(

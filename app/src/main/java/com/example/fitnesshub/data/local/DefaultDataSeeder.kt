@@ -9,7 +9,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
  */
 object DefaultDataSeeder : RoomDatabase.Callback() {
 
-    const val DEFAULT_USER_ID = "00000000-0000-0000-0000-000000000001"
+    const val DEFAULT_USER_ID = DefaultUser.ID
 
     override fun onCreate(db: SupportSQLiteDatabase) {
         super.onCreate(db)
