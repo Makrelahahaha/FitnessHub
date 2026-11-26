@@ -4,6 +4,9 @@ import androidx.compose.runtime.Composable
 import com.example.fitnesshub.ui.components.PlaceholderPanel
 
 @Composable
-fun PersonalDataScreen() {
-    PlaceholderPanel(title = "Personal data")
+fun PersonalDataScreen(onNavigateBack: () -> Unit = {}) {
+    PlaceholderPanel(
+        title = "Personal data",
+        onNavigateBack = onNavigateBack
+    )
 }

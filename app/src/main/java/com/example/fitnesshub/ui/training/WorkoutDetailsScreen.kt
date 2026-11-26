@@ -4,9 +4,13 @@ import androidx.compose.runtime.Composable
 import com.example.fitnesshub.ui.components.PlaceholderPanel
 
 @Composable
-fun WorkoutDetailsScreen(workoutId: String) {
+fun WorkoutDetailsScreen(
+    workoutId: String,
+    onNavigateBack: () -> Unit = {}
+) {
     PlaceholderPanel(
         title = "Workout Details",
-        subtitle = workoutId
+        subtitle = workoutId,
+        onNavigateBack = onNavigateBack
     )
 }

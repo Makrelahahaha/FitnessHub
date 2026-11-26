@@ -30,11 +30,31 @@ fun NavGraphBuilder.homeGraph(navController: NavHostController) {
         }
 
         composable(ProfileRoutes.PersonalData) {
-            PersonalDataScreen()
+            PersonalDataScreen(
+                onNavigateBack = {
+                    if (navController.previousBackStackEntry != null) {
+                        navController.popBackStack()
+                    } else {
+                        navController.navigate(HomeRoutes.Main) {
+                            popUpTo(HomeRoutes.Main) { inclusive = true }
+                        }
+                    }
+                }
+            )
         }
 
         composable(ProfileRoutes.Settings) {
-            SettingsScreen()
+            SettingsScreen(
+                onNavigateBack = {
+                    if (navController.previousBackStackEntry != null) {
+                        navController.popBackStack()
+                    } else {
+                        navController.navigate(HomeRoutes.Main) {
+                            popUpTo(HomeRoutes.Main) { inclusive = true }
+                        }
+                    }
+                }
+            )
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.fitnesshub.ui.training
 
+import android.net.Uri
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -16,7 +17,10 @@ object TrainingRoutes {
     const val WorkoutIdArg = "workoutId"
     const val Details = "training/details/{$WorkoutIdArg}"
 
-    fun details(workoutId: String) = "training/details/$workoutId"
+    fun details(workoutId: String): String {
+        val safeId = workoutId.ifBlank { "unknown" }
+        return "training/details/${Uri.encode(safeId)}"
+    }
 }
 
 fun NavGraphBuilder.trainingGraph(navController: NavHostController) {
@@ -39,11 +43,15 @@ fun NavGraphBuilder.trainingGraph(navController: NavHostController) {
         }
 
         composable(TrainingRoutes.Calendar) {
-            TrainingCalendarScreen()
+            TrainingCalendarScreen(
+                onNavigateBack = { navController.popBackStack() }
+            )
         }
 
         composable(TrainingRoutes.Library) {
-            ExerciseLibraryScreen()
+            ExerciseLibraryScreen(
+                onNavigateBack = { navController.popBackStack() }
+            )
         }
 
         composable(
@@ -54,10 +62,10 @@ fun NavGraphBuilder.trainingGraph(navController: NavHostController) {
                 }
             )
         ) { entry ->
+            val rawId = entry.arguments?.getString(TrainingRoutes.WorkoutIdArg).orEmpty()
             WorkoutDetailsScreen(
-                workoutId = entry.arguments
-                    ?.getString(TrainingRoutes.WorkoutIdArg)
-                    .orEmpty()
+                workoutId = Uri.decode(rawId),
+                onNavigateBack = { navController.popBackStack() }
             )
         }
     }
