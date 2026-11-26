@@ -22,8 +22,9 @@ data class PlaceholderAction(
 fun PlaceholderPanel(
     title: String,
     modifier: Modifier = Modifier,
-    subtitle: String? = null,    // Dynamic color is available on Android 12+
-    actions: List<PlaceholderAction> = emptyList()
+    subtitle: String? = null,
+    actions: List<PlaceholderAction> = emptyList(),
+    onNavigateBack: (() -> Unit)? = null
 ) {
     Box(
         modifier = modifier
@@ -59,6 +60,15 @@ fun PlaceholderPanel(
                             Text(text = action.label)
                         }
                     }
+                }
+            }
+
+            if (onNavigateBack != null) {
+                OutlinedButton(
+                    onClick = onNavigateBack,
+                    modifier = Modifier.padding(top = 16.dp)
+                ) {
+                    Text(text = "Back")
                 }
             }
         }

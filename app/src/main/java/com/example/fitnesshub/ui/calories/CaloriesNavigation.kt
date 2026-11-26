@@ -25,7 +25,17 @@ fun NavGraphBuilder.caloriesGraph(navController: NavHostController) {
         }
 
         composable(CaloriesRoutes.WaterTracker) {
-            WaterTrackerScreen()
+            WaterTrackerScreen(
+                onNavigateBack = {
+                    if (navController.previousBackStackEntry != null) {
+                        navController.popBackStack()
+                    } else {
+                        navController.navigate(CaloriesRoutes.Main) {
+                            popUpTo(CaloriesRoutes.Main) { inclusive = true }
+                        }
+                    }
+                }
+            )
         }
     }
 }

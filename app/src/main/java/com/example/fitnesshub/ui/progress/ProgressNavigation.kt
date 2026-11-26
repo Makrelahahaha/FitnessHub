@@ -25,7 +25,9 @@ fun NavGraphBuilder.progressGraph(navController: NavHostController) {
         }
 
         composable(ProgressRoutes.Challenges) {
-            ChallengesScreen()
+            ChallengesScreen(
+                onNavigateBack = { navController.popBackStack() }
+            )
         }
     }
 }

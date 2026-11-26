@@ -4,6 +4,9 @@ import androidx.compose.runtime.Composable
 import com.example.fitnesshub.ui.components.PlaceholderPanel
 
 @Composable
-fun WaterTrackerScreen() {
-    PlaceholderPanel(title = "Water Tracker")
+fun WaterTrackerScreen(onNavigateBack: () -> Unit = {}) {
+    PlaceholderPanel(
+        title = "Water Tracker",
+        onNavigateBack = onNavigateBack
+    )
 }

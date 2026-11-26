@@ -1,5 +1,6 @@
 package com.example.fitnesshub.ui.plans
 
+import android.net.Uri
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -14,7 +15,10 @@ object PlansRoutes {
     const val PlanIdArg = "planId"
     const val Details = "plans/details/{$PlanIdArg}"
 
-    fun details(planId: String) = "plans/details/$planId"
+    fun details(planId: String): String {
+        val safeId = planId.ifBlank { "unknown" }
+        return "plans/details/${Uri.encode(safeId)}"
+    }
 }
 
 fun NavGraphBuilder.plansGraph(navController: NavHostController) {
@@ -38,10 +42,18 @@ fun NavGraphBuilder.plansGraph(navController: NavHostController) {
                 }
             )
         ) { entry ->
+            val rawId = entry.arguments?.getString(PlansRoutes.PlanIdArg).orEmpty()
             PlanDetailsScreen(
-                planId = entry.arguments
-                    ?.getString(PlansRoutes.PlanIdArg)
-                    .orEmpty()
+                planId = Uri.decode(rawId),
+                onNavigateBack = {
+                    if (navController.previousBackStackEntry != null) {
+                        navController.popBackStack()
+                    } else {
+                        navController.navigate(PlansRoutes.Main) {
+                            popUpTo(PlansRoutes.Main) { inclusive = true }
+                        }
+                    }
+                }
             )
         }
     }
