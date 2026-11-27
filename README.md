@@ -6,6 +6,8 @@ Poniżej opisano wszystkie funkcje dostępne w aplikacji, pogrupowane według g�
 
 Prototyp aplikacji w Figma: https://www.figma.com/community/file/1695394639922316740
 
+Opis modelu danych: [pobierz dokument](FitnessHub-data_model.docx?raw=true)
+
 ## Obszary aplikacji
 
 | Obszar | Ekrany |
